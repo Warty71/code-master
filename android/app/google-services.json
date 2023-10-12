@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "629481766656",
+    "project_id": "code-master-73d16",
+    "storage_bucket": "code-master-73d16.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629481766656:android:cb2dbf7907d2c8857cbde5",
+        "android_client_info": {
+          "package_name": "com.master.code"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCdvX7978GxedegPuCl1PpK01DXhg7xeKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
