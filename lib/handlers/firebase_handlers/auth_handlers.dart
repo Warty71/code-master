@@ -1,17 +1,23 @@
 // ignore_for_file: avoid_print
-
 import 'package:code_master/services/firebase_services/auth_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class FirebaseAuthHandler {
-  FirebaseAuthHandler();
+enum SignInType { manual, google, apple, linkedin }
 
-  Future<void> signInWithGoogle() async {
+class AuthHandler {
+  final authService = FirebaseAuthServices();
+
+  Future<UserCredential> signIn(SignInType type) async {
     try {
-      await FirebaseAuthServices().signInWithGoogle();
-    } catch (e) {
+      switch (type) {
+        case SignInType.google:
+          return authService.signInWithGoogle();
+        default:
+          return authService.signInWithGoogle();
+      }
+    } on FirebaseException catch (e) {
       print(e);
+      rethrow;
     }
   }
-
-  Future<void> signInManual() async {}
 }

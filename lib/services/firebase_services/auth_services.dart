@@ -1,10 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthServices {
   // Sign-In (Google)
-  signInWithGoogle() async {
+  Future<UserCredential> signInWithGoogle() async {
     // Begin the auth process.
     final GoogleSignInAccount? gUser = await GoogleSignIn().signIn();
 
@@ -18,14 +17,11 @@ class FirebaseAuthServices {
     );
 
     // Sign the user in.
-    await FirebaseAuth.instance.signInWithCredential(credentials);
+    return await FirebaseAuth.instance.signInWithCredential(credentials);
   }
 
   // Sign-In (Manual)
-  manualSignIn(
-    String userEmail,
-    String userPassword,
-  ) async {
+  manualSignIn(String userEmail, String userPassword) async {
     final userCredential =
         await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: userEmail.toString(),
@@ -41,22 +37,9 @@ class FirebaseAuthServices {
     String userPassword,
     String userConfirmPassword,
   ) async {
-    // Check passwords for equality
-    if (userPassword == userConfirmPassword) {
-      try {
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: userEmail.trim(),
-          password: userPassword,
-        );
-
-        // Todo: await userCredential.user?.sendEmailVerification();
-
-        // Todo: Show a confirmation dialog.
-      } catch (e) {
-        if (kDebugMode) {
-          print(e);
-        }
-      }
-    }
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      email: userEmail.trim(),
+      password: userPassword,
+    );
   }
 }

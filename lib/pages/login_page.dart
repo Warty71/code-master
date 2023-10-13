@@ -3,7 +3,10 @@ import 'package:code_master/components/login_textfield.dart';
 import 'package:code_master/components/login_tile.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../bloc/auth_bloc.dart';
 
 Color primaryColor = Colors.blueGrey.shade100;
 Color secondaryColor = const Color.fromARGB(255, 65, 44, 118);
@@ -105,17 +108,22 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        LoginTile(
-                          imagePath: "assets/images/google.png",
-                          onPressed: () async {},
-                        ),
-                        LoginTile(
+                        BlocBuilder<AuthBloc, AuthState>(
+                            builder: (context, state) {
+                          return const LoginTile(
+                            imagePath: "assets/images/google.png",
+                            method: AuthEvent.google,
+                          );
+                        }),
+                        const LoginTile(
                           imagePath: "assets/images/apple_outlined.png",
-                          onPressed: () async {},
+                          method: AuthEvent.apple,
+                          //onPressed: () async {},
                         ),
-                        LoginTile(
+                        const LoginTile(
                           imagePath: "assets/images/facebook.png",
-                          onPressed: () {},
+                          method: AuthEvent.facebook,
+                          // onPressed: () {},
                         ),
                       ],
                     ),
