@@ -1,5 +1,3 @@
-import 'package:code_master/components/login_button.dart';
-import 'package:code_master/components/login_textfield.dart';
 import 'package:code_master/components/login_tile.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +18,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -45,7 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 5.0),
                     child: Text(
-                      "Dart Rapid Craft!",
+                      "Code Master",
                       style: GoogleFonts.openSans(
                         fontSize: 24,
                         fontWeight: FontWeight.w600,
@@ -63,38 +58,6 @@ class _LoginPageState extends State<LoginPage> {
                         fontWeight: FontWeight.w600,
                         color: secondaryColor,
                       ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
-                      vertical: 5,
-                    ),
-                    child: LoginTextfield(
-                      textController: _emailController,
-                      hintText: "E-mail...",
-                      obscureText: false,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
-                      vertical: 5,
-                    ),
-                    child: LoginTextfield(
-                      textController: _passwordController,
-                      hintText: context.tr("loginPassword"),
-                      obscureText: true,
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 25,
-                      vertical: 25,
-                    ),
-                    child: LoginButton(
-                      userEmailController: _emailController,
-                      userPasswordController: _passwordController,
                     ),
                   ),
                   Divider(

@@ -20,26 +20,7 @@ class FirebaseAuthServices {
     return await FirebaseAuth.instance.signInWithCredential(credentials);
   }
 
-  // Sign-In (Manual)
-  manualSignIn(String userEmail, String userPassword) async {
-    final userCredential =
-        await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: userEmail.toString(),
-      password: userPassword.toString(),
-    );
-
-    return userCredential;
-  }
-
-  // Sign-Up (Manual)
-  Future<void> manualSignUp(
-    String userEmail,
-    String userPassword,
-    String userConfirmPassword,
-  ) async {
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: userEmail.trim(),
-      password: userPassword,
-    );
+  Future<void> signOut() async {
+    await FirebaseAuth.instance.signOut();
   }
 }

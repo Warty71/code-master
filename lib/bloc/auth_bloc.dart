@@ -5,7 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../handlers/firebase_handlers/auth_handlers.dart';
 
-enum AuthEvent { manual, google, apple, facebook }
+enum AuthEvent { google, apple, facebook, signOut }
 
 class AuthState {
   final User? user;
@@ -23,7 +23,7 @@ class AuthState {
     AuthEvent? loadingMethod,
   }) {
     return AuthState(
-      user: user ?? this.user,
+      user: user,
       isLoading: isLoading ?? this.isLoading,
       loadingMethod: loadingMethod ?? this.loadingMethod,
     );
@@ -34,29 +34,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthHandler authHandler = AuthHandler();
 
   AuthBloc()
-      : super(AuthState(isLoading: false, loadingMethod: AuthEvent.manual)) {
+      : super(AuthState(
+            user: null, isLoading: false, loadingMethod: AuthEvent.signOut)) {
     on<AuthEvent>((event, emit) async {
       emit(state.copyWith(isLoading: true));
+      UserCredential userCredential;
+      User? user;
       try {
         switch (event) {
-          case AuthEvent.manual:
-            emit(state.copyWith(loadingMethod: AuthEvent.manual));
           case AuthEvent.google:
             emit(state.copyWith(loadingMethod: AuthEvent.google));
-            await authHandler.signIn(SignInType.google);
-
-          case AuthEvent.apple:
-            emit(state.copyWith(loadingMethod: AuthEvent.apple));
-          case AuthEvent.facebook:
-            emit(state.copyWith(loadingMethod: AuthEvent.facebook));
-
+            userCredential = await authHandler.signIn(AuthType.google);
+            user = userCredential.user;
             break;
+
+          case AuthEvent.signOut:
+            await authHandler.signOut();
+            user = null;
+            break;
+
           default:
+            user = null;
         }
       } catch (e) {
         print(e);
       } finally {
-        emit(state.copyWith(isLoading: false));
+        emit(state.copyWith(
+            isLoading: false, loadingMethod: AuthEvent.signOut, user: user));
       }
     });
   }

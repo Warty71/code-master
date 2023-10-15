@@ -15,7 +15,7 @@ class IntroButton extends StatelessWidget {
       ),
       child: InkWell(
         borderRadius: BorderRadius.circular(10),
-        onTap: () => context.go('/login'),
+        onTap: () => context.go('/auth'),
         child: Container(
           decoration: BoxDecoration(
             color: Colors.transparent,
