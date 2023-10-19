@@ -1,6 +1,6 @@
 // ignore_for_file: avoid_print
 
-import 'package:code_master/pages/home_page.dart';
+import 'package:code_master/components/snake_bar.dart';
 import 'package:code_master/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,7 +15,7 @@ class AuthPage extends StatelessWidget {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         if (state.user != null) {
-          return const HomePage();
+          return const SnakeBar();
         } else {
           return const LoginPage();
         }
