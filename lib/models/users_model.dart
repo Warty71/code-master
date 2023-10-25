@@ -11,11 +11,13 @@ class Users {
   String id;
   String userName;
   String email;
+  String lastLogin;
 
   Users({
     required this.id,
     required this.userName,
     required this.email,
+    required this.lastLogin,
   });
 
   factory Users.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,7 @@ class Users {
       id: json['id'],
       userName: json['userName'],
       email: json['email'],
+      lastLogin: json['lastLogin'],
     );
   }
 
@@ -31,6 +34,7 @@ class Users {
       'id': id,
       'userName': userName,
       'email': email,
+      'lastLogin': lastLogin,
     };
   }
 }

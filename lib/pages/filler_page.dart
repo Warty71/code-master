@@ -5,8 +5,9 @@ class FillerPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
+    return Scaffold(
+      backgroundColor: Colors.grey.shade300,
+      body: const Center(
         child: Text("Filler Page"),
       ),
     );

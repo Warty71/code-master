@@ -24,7 +24,7 @@ class IntroPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "DART RAPID CRAFT",
+                    "CODE MASTER",
                     style: GoogleFonts.roadRage(
                       color: AppConstants.textColor,
                       fontSize: 34,

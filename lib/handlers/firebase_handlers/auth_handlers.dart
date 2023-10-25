@@ -30,4 +30,15 @@ class AuthHandler {
       rethrow;
     }
   }
+
+  Future<void> deleteUser() async {
+    try {
+      await authService.deleteUser();
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+    } on Exception catch (e) {
+      print(e);
+      rethrow;
+    }
+  }
 }

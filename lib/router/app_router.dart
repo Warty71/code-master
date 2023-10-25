@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 import '../models/app_model.dart';
+import '../pages/cv_page.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -42,6 +43,12 @@ class AppRouter {
             builder: (BuildContext context, GoRouterState state) {
               App displayApp = state.extra as App;
               return DetailsPage(currentApp: displayApp);
+            },
+          ),
+          GoRoute(
+            path: 'cv',
+            builder: (BuildContext context, GoRouterState state) {
+              return const CVPage();
             },
           ),
         ],

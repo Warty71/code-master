@@ -16,32 +16,49 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: [
-            // * Back & Extra
-            Row(
-              children: [],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+        child: Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // * Image
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.asset(
-                    widget.currentApp.imagePath,
-                    height: 100,
+                Text(
+                  "Project Details",
+                  style: GoogleFonts.roadRage(
+                    fontSize: 40,
                   ),
                 ),
 
-                // * Name
-                Text(
-                  widget.currentApp.name,
-                  style: GoogleFonts.roadRage(fontSize: 40),
+                const SizedBox(
+                  height: 30,
                 ),
+
+                // * Title
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    widget.currentApp.name,
+                    style: GoogleFonts.roadRage(fontSize: 50),
+                  ),
+                ),
+
+                const SizedBox(
+                  height: 10,
+                ),
+
+                // * Description
+                Text(
+                  widget.currentApp.description,
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.roadRage(
+                    fontSize: 26,
+                  ),
+                ),
+
+                // * Screenshots Carousel
               ],
             ),
-          ],
+          ),
         ),
       ),
     );

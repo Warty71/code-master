@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../bloc/auth_bloc.dart';
+import '../components/user_tile.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -86,7 +91,30 @@ class UserPage extends StatelessWidget {
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(25),
                   ),
-                )
+                ),
+
+                // * ListView
+                UserTile(
+                  title: "User Details",
+                  icon: const Icon(Icons.person, size: 28),
+                  onTap: () {
+                    context.push("/cv");
+                  },
+                ),
+                UserTile(
+                  title: "Sign Out",
+                  icon: const Icon(Icons.logout, size: 28),
+                  onTap: () {
+                    BlocProvider.of<AuthBloc>(context).add(AuthEvent.signOut);
+                  },
+                ),
+                UserTile(
+                  title: "Delete Account",
+                  icon: const Icon(Icons.delete, size: 28),
+                  onTap: () {
+                    BlocProvider.of<AuthBloc>(context).add(AuthEvent.delete);
+                  },
+                ),
               ],
             ),
           ),

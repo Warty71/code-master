@@ -54,6 +54,7 @@ class DefaultFirebaseOptions {
     appId: '1:629481766656:android:cb2dbf7907d2c8857cbde5',
     messagingSenderId: '629481766656',
     projectId: 'code-master-73d16',
+    databaseURL: 'https://code-master-73d16-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'code-master-73d16.appspot.com',
   );
 
@@ -62,7 +63,10 @@ class DefaultFirebaseOptions {
     appId: '1:629481766656:ios:c48ce4f4b77fe0cd7cbde5',
     messagingSenderId: '629481766656',
     projectId: 'code-master-73d16',
+    databaseURL: 'https://code-master-73d16-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'code-master-73d16.appspot.com',
+    androidClientId: '629481766656-olmb3phqb15j1l2sgp7s3rine6ur2i9f.apps.googleusercontent.com',
+    iosClientId: '629481766656-e7pg68mvlh6644ketjdsd2dvemr653c8.apps.googleusercontent.com',
     iosBundleId: 'com.master.code',
   );
 }

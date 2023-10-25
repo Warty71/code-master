@@ -1,11 +1,12 @@
 // ignore_for_file: avoid_print
 
 import 'package:bloc/bloc.dart';
+import 'package:code_master/handlers/firebase_handlers/database_handlers.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import '../handlers/firebase_handlers/auth_handlers.dart';
 
-enum AuthEvent { google, apple, facebook, signOut }
+enum AuthEvent { google, apple, facebook, signOut, delete }
 
 class AuthState {
   final User? user;
@@ -32,6 +33,7 @@ class AuthState {
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthHandler authHandler = AuthHandler();
+  final DatabaseHandler databaseHandler = DatabaseHandler();
 
   AuthBloc()
       : super(AuthState(
@@ -46,11 +48,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(state.copyWith(loadingMethod: AuthEvent.google));
             userCredential = await authHandler.signIn(AuthType.google);
             user = userCredential.user;
+            await databaseHandler.saveUserData(user!);
             break;
 
           case AuthEvent.signOut:
             await authHandler.signOut();
             user = null;
+            break;
+
+          case AuthEvent.delete:
+            await authHandler.deleteUser();
             break;
 
           default:

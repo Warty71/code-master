@@ -14,14 +14,17 @@ class FirebaseDatabaseServices {
     final DataSnapshot snapshot = event.snapshot;
     final dynamic userData = snapshot.value;
 
+    final newUser = Users.fromJson({
+      'id': user.uid,
+      'userName': user.displayName,
+      'email': user.email,
+      'lastLogin': DateTime.now().toIso8601String(),
+    });
+
     if (userData == null) {
-      // If it is the user's first login, save his data.
-      final newUser = Users.fromJson({
-        'id': user.uid,
-        'userName': user.displayName,
-        'email': user.email,
-      });
       await userRef.set(newUser.toJson());
+    } else {
+      await userRef.update(newUser.toJson());
     }
   }
 }
