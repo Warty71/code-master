@@ -62,7 +62,7 @@ class UserPage extends StatelessWidget {
 
                           // * Title
                           Text(
-                            "Flutter Developer",
+                            "Flutter Engineer",
                             style: GoogleFonts.roadRage(
                               fontSize: 28,
                             ),

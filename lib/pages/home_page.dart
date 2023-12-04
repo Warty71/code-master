@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            "'Ilumska Vaktija'",
+                            "'Auction Boy'",
                             style: GoogleFonts.roadRage(
                               fontSize: 30,
                               letterSpacing: 2,
@@ -70,7 +70,7 @@ class HomePage extends StatelessWidget {
                         ],
                       ),
                       Image.asset(
-                        "assets/images/app_logos/ilum.jpg",
+                        "assets/images/app_logos/auction-boy.png",
                         height: 50,
                       ),
                     ],

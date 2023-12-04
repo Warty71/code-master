@@ -8,7 +8,7 @@ class FillerPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       body: const Center(
-        child: Text("Filler Page"),
+        child: Text("Widgets Catalogue"),
       ),
     );
   }

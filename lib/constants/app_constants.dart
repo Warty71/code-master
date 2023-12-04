@@ -19,7 +19,7 @@ class AppConstants {
   static const double defaultPadding = 16.0;
 
   // App Data
-  static final List appList = [appIman, appIlum, appSpare];
+  static final List appList = [appIman, appIlum, appAuctionBoy, appSpare];
 
   // * IMAN
   static final appIman = App(
@@ -27,7 +27,7 @@ class AppConstants {
     description:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
     imagePath: "assets/images/app_logos/iman.jpg",
-    client: "Adnan \nMuratovic",
+    client: "Adnan Muratovic",
     releaseDateAndroid: "123",
     releaseDateIOS: "123",
   );
@@ -37,7 +37,17 @@ class AppConstants {
     name: "Ilumska Vaktija",
     description: "Description",
     imagePath: "assets/images/app_logos/ilum.jpg",
-    client: "Mehmed \nTukulic",
+    client: "Mehmed Tukulic",
+    releaseDateAndroid: "123",
+    releaseDateIOS: "123",
+  );
+
+  // * Auction Boy
+  static final appAuctionBoy = App(
+    name: "Auction Boy",
+    description: "Secondhand Auction App",
+    imagePath: "assets/images/app_logos/auction-boy.png",
+    client: "Moonlink GmbH",
     releaseDateAndroid: "123",
     releaseDateIOS: "123",
   );

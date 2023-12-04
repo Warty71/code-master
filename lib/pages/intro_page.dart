@@ -14,10 +14,10 @@ class IntroPage extends StatelessWidget {
       backgroundColor: AppConstants.introBackgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               // * App Name & Language Selection
               Row(
