@@ -1,10 +1,10 @@
-import 'package:code_master/components/login_tile.dart';
+import 'package:code_master/widgets/components/login_tile.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../bloc/auth_bloc.dart';
+import '../bloc/user_bloc.dart';
 
 Color primaryColor = Colors.blueGrey.shade100;
 Color secondaryColor = const Color.fromARGB(255, 65, 44, 118);
@@ -71,22 +71,32 @@ class _LoginPageState extends State<LoginPage> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        BlocBuilder<AuthBloc, AuthState>(
+                        BlocBuilder<UserBloc, UserState>(
                             builder: (context, state) {
-                          return const LoginTile(
+                          return LoginTile(
                             imagePath: "assets/images/google.png",
-                            method: AuthEvent.google,
+                            method: "Google",
+                            onPressed: () {
+                              BlocProvider.of<UserBloc>(context)
+                                  .add(UserEvent.google);
+                            },
                           );
                         }),
-                        const LoginTile(
+                        LoginTile(
                           imagePath: "assets/images/apple_outlined.png",
-                          method: AuthEvent.apple,
-                          //onPressed: () async {},
+                          method: "Apple",
+                          onPressed: () {
+                            BlocProvider.of<UserBloc>(context)
+                                .add(UserEvent.apple);
+                          },
                         ),
-                        const LoginTile(
+                        LoginTile(
                           imagePath: "assets/images/facebook.png",
-                          method: AuthEvent.facebook,
-                          // onPressed: () {},
+                          method: "Facebook",
+                          onPressed: () {
+                            BlocProvider.of<UserBloc>(context)
+                                .add(UserEvent.facebook);
+                          },
                         ),
                       ],
                     ),

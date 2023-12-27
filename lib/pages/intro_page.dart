@@ -1,4 +1,4 @@
-import 'package:code_master/components/intro_button.dart';
+import 'package:code_master/widgets/components/intro_button.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -17,7 +17,7 @@ class IntroPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 15.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // * App Name & Language Selection
               Row(
@@ -94,6 +94,10 @@ class IntroPage extends StatelessWidget {
               // * Button - Continue
               IntroButton(
                 text: context.tr("introButton"),
+              ),
+
+              const SizedBox(
+                height: 10,
               ),
             ],
           ),

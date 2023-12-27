@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../models/app_model.dart';
+import '../../models/app_model.dart';
 
 class DRCAppTile extends StatelessWidget {
   final App app;

@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../bloc/auth_bloc.dart';
+import '../../bloc/user_bloc.dart';
 
 class LoginButton extends StatefulWidget {
   final TextEditingController userEmailController;
@@ -30,7 +30,7 @@ class _LoginButtonState extends State<LoginButton> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
+    return BlocBuilder<UserBloc, UserState>(
       builder: (context, state) {
         return Ink(
           width: 225,

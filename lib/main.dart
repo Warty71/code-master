@@ -1,6 +1,8 @@
-import 'package:code_master/bloc/auth_bloc.dart';
+import 'package:code_master/bloc/user_bloc.dart';
+import 'package:code_master/constants/app_constants.dart';
 import 'package:code_master/firebase_options.dart';
 import 'package:code_master/router/app_router.dart';
+import 'package:code_master/managers/snackbar_manager.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +21,6 @@ void main() async {
     EasyLocalization(
       supportedLocales: const [
         Locale('en', 'EN'),
-        Locale('de', 'DE'),
         Locale('bs', "BS"),
       ],
       path: "assets/translations",
@@ -39,10 +40,32 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => AuthBloc(),
+          create: (context) => UserBloc(),
         ),
       ],
       child: MaterialApp.router(
+        builder: (context, child) {
+          return StreamBuilder<String>(
+            stream: SnackbarManager().snackbarStream,
+            builder: (context, snapshot) {
+              if (snapshot.hasData) {
+                final message = snapshot.data;
+                WidgetsBinding.instance.addPostFrameCallback((_) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(message!),
+                      duration: const Duration(seconds: 2),
+                      backgroundColor: AppConstants.introBackgroundColor,
+                      elevation: 3,
+                    ),
+                  );
+                });
+              }
+              return child!;
+            },
+          );
+        },
+        title: "Code Master",
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,

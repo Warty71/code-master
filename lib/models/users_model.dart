@@ -7,22 +7,22 @@
   Below is an example of a user model.
 */
 
-class Users {
-  String id;
+class UserData {
+  String uid;
   String userName;
   String email;
   String lastLogin;
 
-  Users({
-    required this.id,
+  UserData({
+    required this.uid,
     required this.userName,
     required this.email,
     required this.lastLogin,
   });
 
-  factory Users.fromJson(Map<String, dynamic> json) {
-    return Users(
-      id: json['id'],
+  factory UserData.fromJson(Map<String, dynamic> json) {
+    return UserData(
+      uid: json['uid'],
       userName: json['userName'],
       email: json['email'],
       lastLogin: json['lastLogin'],
@@ -31,7 +31,7 @@ class Users {
 
   Map<String, dynamic> toJson() {
     return {
-      'id': id,
+      'uid': uid,
       'userName': userName,
       'email': email,
       'lastLogin': lastLogin,

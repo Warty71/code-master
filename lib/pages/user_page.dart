@@ -1,10 +1,11 @@
+import 'package:code_master/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../bloc/auth_bloc.dart';
-import '../components/user_tile.dart';
+import '../bloc/user_bloc.dart';
+import '../widgets/components/user_tile.dart';
 
 class UserPage extends StatelessWidget {
   const UserPage({super.key});
@@ -12,10 +13,31 @@ class UserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        leading: const Icon(
+          Icons.menu,
+          color: Colors.black,
+          size: 30,
+        ),
+        title: Text(
+          AppConstants.appTitleCaps,
+          style: GoogleFonts.roadRage(
+            fontSize: 32,
+            letterSpacing: 2,
+            color: Colors.black,
+          ),
+        ),
+        centerTitle: true,
+      ),
       backgroundColor: Colors.grey.shade300,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(25.0),
+          padding: const EdgeInsets.symmetric(
+            horizontal: 25,
+            vertical: 0,
+          ),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -105,14 +127,14 @@ class UserPage extends StatelessWidget {
                   title: "Sign Out",
                   icon: const Icon(Icons.logout, size: 28),
                   onTap: () {
-                    BlocProvider.of<AuthBloc>(context).add(AuthEvent.signOut);
+                    BlocProvider.of<UserBloc>(context).add(UserEvent.signOut);
                   },
                 ),
                 UserTile(
                   title: "Delete Account",
                   icon: const Icon(Icons.delete, size: 28),
                   onTap: () {
-                    BlocProvider.of<AuthBloc>(context).add(AuthEvent.delete);
+                    BlocProvider.of<UserBloc>(context).add(UserEvent.delete);
                   },
                 ),
               ],
