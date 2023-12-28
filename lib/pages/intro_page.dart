@@ -14,10 +14,8 @@ class IntroPage extends StatelessWidget {
       backgroundColor: AppConstants.introBackgroundColor,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               // * App Name & Language Selection
               Row(
@@ -52,43 +50,32 @@ class IntroPage extends StatelessWidget {
 
               // * SizedBox
               const SizedBox(
-                height: 20,
-              ),
-
-              // * Icon
-              Padding(
-                padding: const EdgeInsets.all(40.0),
-                child: Image.asset(
-                  "assets/images/mad_max.png",
-                ),
+                height: 150,
               ),
 
               // * Title
               Text(
                 context.tr("introTitle"),
+                textAlign: TextAlign.center,
                 style: GoogleFonts.roadRage(
                   color: AppConstants.textColor,
-                  fontSize: 58,
+                  fontSize: 62,
                 ),
-              ),
-
-              // * SizedBox
-              const SizedBox(
-                height: 20,
               ),
 
               // * Subtitle
               Text(
                 context.tr("introSubtitle"),
+                textAlign: TextAlign.center,
                 style: GoogleFonts.roadRage(
                   color: AppConstants.textColor,
-                  fontSize: 34,
+                  fontSize: 30,
                 ),
               ),
 
               // * SizedBox
               const SizedBox(
-                height: 20,
+                height: 30,
               ),
 
               // * Button - Continue
