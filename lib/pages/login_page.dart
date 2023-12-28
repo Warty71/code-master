@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: tertiaryColor,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 5.0),
+                    padding: const EdgeInsets.only(bottom: 5.0),
                     child: Text(
                       "Code Master",
                       style: GoogleFonts.openSans(
@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 25),
                     child: Text(
                       context.tr("loginSubtitle"),
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.openSans(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
