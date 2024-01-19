@@ -5,11 +5,12 @@ class UserTile extends StatelessWidget {
   final String title;
   final Icon icon;
   final void Function()? onTap;
-  const UserTile(
-      {super.key,
-      required this.title,
-      required this.icon,
-      required this.onTap});
+  const UserTile({
+    super.key,
+    required this.title,
+    required this.icon,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {

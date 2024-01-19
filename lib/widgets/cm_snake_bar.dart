@@ -3,17 +3,17 @@ import 'package:code_master/pages/filler_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
 
-import '../../pages/home_page.dart';
-import '../../pages/user_page.dart';
+import '../pages/home_page.dart';
+import '../pages/user_page.dart';
 
-class SnakeBar extends StatefulWidget {
-  const SnakeBar({super.key});
+class CmSnakeBar extends StatefulWidget {
+  const CmSnakeBar({super.key});
 
   @override
-  State<SnakeBar> createState() => _SnakeBarState();
+  State<CmSnakeBar> createState() => _CmSnakeBarState();
 }
 
-class _SnakeBarState extends State<SnakeBar> {
+class _CmSnakeBarState extends State<CmSnakeBar> {
   int currentIndex = 0;
 
   final List<Widget> pages = [

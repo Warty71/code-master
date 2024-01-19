@@ -1,6 +1,6 @@
+import 'package:code_master/widgets/cm_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../constants/app_constants.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,24 +12,7 @@ class HomePage extends StatelessWidget {
       child: Scaffold(
         resizeToAvoidBottomInset: false,
         backgroundColor: Colors.grey.shade300,
-        appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          elevation: 0,
-          leading: const Icon(
-            Icons.menu,
-            color: Colors.black,
-            size: 30,
-          ),
-          title: Text(
-            AppConstants.appTitleCaps,
-            style: GoogleFonts.roadRage(
-              fontSize: 32,
-              letterSpacing: 2,
-              color: Colors.black,
-            ),
-          ),
-          centerTitle: true,
-        ),
+        appBar: const CmAppBar(),
         body: SafeArea(
             child: Center(
           child: Text(

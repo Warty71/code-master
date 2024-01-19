@@ -1,3 +1,4 @@
+import 'package:code_master/bloc/network_bloc.dart';
 import 'package:code_master/bloc/user_bloc.dart';
 import 'package:code_master/constants/app_constants.dart';
 import 'package:code_master/firebase_options.dart';
@@ -39,6 +40,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(
+          create: (context) => NetworkBloc()
+            ..add(
+              NetworkObserve(),
+            ),
+        ),
         BlocProvider(
           create: (context) => UserBloc(),
         ),
