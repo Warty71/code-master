@@ -14,11 +14,4 @@ class App {
     required this.releaseDateAndroid,
     required this.releaseDateIOS,
   });
-
-  String get _name => name;
-  String get _description => description;
-  String get _imagePath => imagePath;
-  String get _client => client;
-  String get _releaseDateAndroid => releaseDateAndroid;
-  String get _releaseDateIOS => releaseDateIOS;
 }
