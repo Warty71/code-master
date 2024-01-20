@@ -1,23 +1,7 @@
+import 'package:code_master/bloc/network_bloc/network_event.dart';
+import 'package:code_master/bloc/network_bloc/network_state.dart';
 import 'package:code_master/managers/network_manager.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-abstract class NetworkEvent {}
-
-class NetworkObserve extends NetworkEvent {}
-
-class NetworkNotify extends NetworkEvent {
-  final bool isConnected;
-
-  NetworkNotify({this.isConnected = false});
-}
-
-abstract class NetworkState {}
-
-class NetworkInitial extends NetworkState {}
-
-class NetworkSuccess extends NetworkState {}
-
-class NetworkFailure extends NetworkState {}
 
 class NetworkBloc extends Bloc<NetworkEvent, NetworkState> {
   NetworkBloc._() : super(NetworkInitial()) {

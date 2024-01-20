@@ -1,4 +1,5 @@
-import 'package:code_master/bloc/network_bloc.dart';
+import 'package:code_master/bloc/network_bloc/network_bloc.dart';
+import 'package:code_master/bloc/network_bloc/network_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

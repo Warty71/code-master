@@ -1,41 +1,14 @@
 // ignore_for_file: avoid_print
 
 import 'package:bloc/bloc.dart';
+import 'package:code_master/bloc/user_bloc/user_event.dart';
+import 'package:code_master/bloc/user_bloc/user_state.dart';
 import 'package:code_master/handlers/firebase_handlers/database_handlers.dart';
 import 'package:code_master/models/users_model.dart';
 import 'package:code_master/managers/snackbar_manager.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../handlers/firebase_handlers/auth_handlers.dart';
-
-enum UserEvent { google, apple, facebook, signOut, delete }
-
-class UserState {
-  final User? user;
-  final UserData? userData;
-  final bool? isLoading;
-  final String? authMethod;
-  UserState({
-    this.user,
-    this.userData,
-    this.isLoading,
-    this.authMethod,
-  });
-
-  UserState copyWith({
-    User? user,
-    UserData? userData,
-    bool? isLoading,
-    String? authMethod,
-  }) {
-    return UserState(
-      user: user,
-      userData: userData,
-      isLoading: isLoading,
-      authMethod: authMethod,
-    );
-  }
-}
+import '../../handlers/firebase_handlers/auth_handlers.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   final AuthHandler authHandler = AuthHandler();

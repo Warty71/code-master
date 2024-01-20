@@ -1,4 +1,5 @@
-import 'package:code_master/bloc/network_bloc.dart';
+import 'package:code_master/bloc/network_bloc/network_bloc.dart';
+import 'package:code_master/bloc/network_bloc/network_event.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 
 class NetworkManager {

@@ -1,7 +1,8 @@
+import 'package:code_master/bloc/user_bloc/user_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../../bloc/user_bloc.dart';
+import '../../bloc/user_bloc/user_bloc.dart';
 
 class LoginTile extends StatelessWidget {
   final String imagePath;

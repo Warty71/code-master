@@ -1,5 +1,6 @@
-import 'package:code_master/bloc/network_bloc.dart';
-import 'package:code_master/bloc/user_bloc.dart';
+import 'package:code_master/bloc/network_bloc/network_bloc.dart';
+import 'package:code_master/bloc/network_bloc/network_event.dart';
+import 'package:code_master/bloc/user_bloc/user_bloc.dart';
 import 'package:code_master/constants/app_constants.dart';
 import 'package:code_master/firebase_options.dart';
 import 'package:code_master/router/app_router.dart';
