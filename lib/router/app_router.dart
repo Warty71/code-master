@@ -2,7 +2,7 @@
 import 'package:code_master/pages/auth_page.dart';
 import 'package:code_master/pages/details_page.dart';
 import 'package:code_master/pages/home_page.dart';
-import 'package:code_master/pages/intro_page.dart';
+import 'package:code_master/pages/onboarding_page.dart';
 import 'package:code_master/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -17,7 +17,7 @@ class AppRouter {
       GoRoute(
         path: '/',
         builder: (BuildContext context, GoRouterState state) {
-          return const IntroPage();
+          return const OnboardingPage();
         },
         routes: <RouteBase>[
           GoRoute(

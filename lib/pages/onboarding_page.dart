@@ -5,8 +5,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../constants/app_constants.dart';
 
-class IntroPage extends StatelessWidget {
-  const IntroPage({super.key});
+class OnboardingPage extends StatelessWidget {
+  const OnboardingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
