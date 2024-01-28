@@ -1,13 +1,10 @@
-// ignore_for_file: avoid_print
-
 import 'package:bloc/bloc.dart';
 import 'package:code_master/bloc/user_bloc/user_event.dart';
 import 'package:code_master/bloc/user_bloc/user_state.dart';
 import 'package:code_master/handlers/firebase_handlers/database_handlers.dart';
-import 'package:code_master/models/users_model.dart';
 import 'package:code_master/managers/snackbar_manager.dart';
+import 'package:code_master/models/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-
 import '../../handlers/firebase_handlers/auth_handlers.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
@@ -17,8 +14,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(UserState()) {
     on<UserEvent>((event, emit) async {
       UserCredential? userCredential;
-      User? user;
-      UserData? userData;
+      UserModel? user;
 
       try {
         switch (event) {
@@ -29,32 +25,30 @@ class UserBloc extends Bloc<UserEvent, UserState> {
               AuthType.google,
             );
 
-            user = userCredential?.user;
-
-            if (user != null) {
+            if (userCredential?.user != null) {
               // * If Auth == Success, check if user exists in DB
-              userData = await databaseHandler.getUserData(user.uid);
+              user = await databaseHandler.getUser(userCredential!.user!.uid);
+
               // * If user does not exist, create a new database entry
-              if (userData == null) {
+              if (user == null) {
                 // * Create a new user entry in the database
-                await databaseHandler.saveUserData(user);
-                userData = await databaseHandler.getUserData(user.uid);
+                await databaseHandler.createUser(userCredential);
+                user = await databaseHandler.getUser(userCredential.user!.uid);
               }
+
+              SnackbarManager().showSnackbar("Welcome, ${user?.email}!");
             }
 
-            SnackbarManager().showSnackbar("Welcome, ${user?.email}!");
             break;
 
           case UserEvent.signOut:
             await authHandler.signOut();
             user = null;
-            userData = null;
             break;
 
           case UserEvent.delete:
             await authHandler.deleteUser();
             user = null;
-            userData = null;
             break;
 
           default:
@@ -65,7 +59,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
       } finally {
         emit(state.copyWith(
           user: user,
-          userData: userData,
           isLoading: false,
           authMethod: "",
         ));

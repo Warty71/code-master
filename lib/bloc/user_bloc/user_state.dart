@@ -1,27 +1,22 @@
-import 'package:code_master/models/users_model.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:code_master/models/user_model/user_model.dart';
 
 class UserState {
-  final User? user;
-  final UserData? userData;
+  final UserModel? user;
   final bool? isLoading;
   final String? authMethod;
   UserState({
     this.user,
-    this.userData,
     this.isLoading,
     this.authMethod,
   });
 
   UserState copyWith({
-    User? user,
-    UserData? userData,
+    UserModel? user,
     bool? isLoading,
     String? authMethod,
   }) {
     return UserState(
       user: user,
-      userData: userData,
       isLoading: isLoading,
       authMethod: authMethod,
     );

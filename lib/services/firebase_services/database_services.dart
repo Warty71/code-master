@@ -1,25 +1,28 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:code_master/models/user_model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../models/users_model.dart';
-
 class FirebaseDatabaseServices {
-  // Method used to save the user data to the Realtime-Database
-  Future saveUserData(User user) async {
+  // * Method used to create a new user in the Firestore Database
+  Future<void> createUser(UserCredential userCredential) async {
     // Access the user's ID
     final FirebaseFirestore dbRef = FirebaseFirestore.instance;
 
-    final newUser = UserData.fromJson({
-      'uid': user.uid,
-      'userName': user.displayName,
-      'email': user.email,
-      'lastLogin': DateTime.now().toIso8601String(),
-    });
+    final newUser = UserModel(
+      uid: userCredential.user!.uid,
+      username: userCredential.user!.displayName ?? "",
+      email: userCredential.user!.email!,
+      lastlogin: DateTime.now().toIso8601String(),
+    );
 
-    await dbRef.collection('users').doc(user.uid).set(newUser.toJson());
+    await dbRef
+        .collection('users')
+        .doc(userCredential.user!.uid)
+        .set(newUser.toJson());
   }
 
-  Future<UserData?> getUserData(String uid) async {
+  // * Method used to retrieve the user data from the Firestore Database
+  Future<UserModel?> getUser(String uid) async {
     final FirebaseFirestore dbRef = FirebaseFirestore.instance;
 
     QuerySnapshot querySnapshot =
@@ -28,8 +31,8 @@ class FirebaseDatabaseServices {
     if (querySnapshot.docs.isNotEmpty) {
       DocumentSnapshot document = querySnapshot.docs.first;
       Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-      UserData userData = UserData.fromJson(data);
-      return userData;
+      UserModel user = UserModel.fromJson(data);
+      return user;
     }
 
     return null;
