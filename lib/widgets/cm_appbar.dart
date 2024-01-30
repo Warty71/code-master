@@ -11,7 +11,7 @@ class CmAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppConstants.introBackgroundColor,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       title: Text(
         'Code Master',
         style: AppConstants.primaryFont,

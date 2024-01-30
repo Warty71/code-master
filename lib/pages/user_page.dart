@@ -1,5 +1,5 @@
 import 'package:code_master/bloc/user_bloc/user_event.dart';
-import 'package:code_master/constants/app_constants.dart';
+import 'package:code_master/widgets/cm_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -14,25 +14,8 @@ class UserPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: const Icon(
-          Icons.menu,
-          color: Colors.black,
-          size: 30,
-        ),
-        title: Text(
-          AppConstants.appTitleCaps,
-          style: GoogleFonts.roadRage(
-            fontSize: 32,
-            letterSpacing: 2,
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.grey.shade300,
+      appBar: const CmAppBar(),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(
@@ -49,6 +32,7 @@ class UserPage extends StatelessWidget {
                   "My Profile",
                   style: GoogleFonts.roadRage(
                     fontSize: 40,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
 
@@ -61,7 +45,7 @@ class UserPage extends StatelessWidget {
                   alignment: Alignment.center,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.primaryContainer,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
@@ -69,9 +53,21 @@ class UserPage extends StatelessWidget {
                       child: Column(
                         children: [
                           // * Avatar
-                          const CircleAvatar(
+                          CircleAvatar(
                             minRadius: 70,
-                            child: Text("Image"),
+                            backgroundColor:
+                                Theme.of(context).colorScheme.onPrimary,
+                            foregroundColor:
+                                Theme.of(context).colorScheme.primary,
+                            child: Text(
+                              "Image",
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
+                              ),
+                            ),
                           ),
 
                           // * Name and Surname
@@ -80,6 +76,9 @@ class UserPage extends StatelessWidget {
                             style: GoogleFonts.roadRage(
                               fontSize: 34,
                               letterSpacing: 0.45,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onPrimaryContainer,
                             ),
                           ),
 
@@ -88,6 +87,9 @@ class UserPage extends StatelessWidget {
                             "Flutter Engineer",
                             style: GoogleFonts.roadRage(
                               fontSize: 28,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onPrimaryContainer,
                             ),
                           ),
                         ],
@@ -105,13 +107,14 @@ class UserPage extends StatelessWidget {
                   "Account & Settings",
                   style: GoogleFonts.roadRage(
                     fontSize: 28,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                 ),
 
                 // * Additional Settings
                 Container(
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.primaryContainer,
                     borderRadius: BorderRadius.circular(25),
                   ),
                 ),
@@ -119,21 +122,33 @@ class UserPage extends StatelessWidget {
                 // * ListView
                 UserTile(
                   title: "User Details",
-                  icon: const Icon(Icons.person, size: 28),
+                  icon: Icon(
+                    Icons.person,
+                    size: 28,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
                   onTap: () {
                     context.push("/cv");
                   },
                 ),
                 UserTile(
                   title: "Sign Out",
-                  icon: const Icon(Icons.logout, size: 28),
+                  icon: Icon(
+                    Icons.logout,
+                    size: 28,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
                   onTap: () {
                     BlocProvider.of<UserBloc>(context).add(UserEvent.signOut);
                   },
                 ),
                 UserTile(
                   title: "Delete Account",
-                  icon: const Icon(Icons.delete, size: 28),
+                  icon: Icon(
+                    Icons.delete,
+                    size: 28,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
                   onTap: () {
                     BlocProvider.of<UserBloc>(context).add(UserEvent.delete);
                   },

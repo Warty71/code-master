@@ -35,7 +35,8 @@ class LoginTile extends StatelessWidget {
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
                   border: Border.all(
-                      color: const Color.fromARGB(255, 65, 44, 118), width: 1),
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                      width: 1),
                   borderRadius: BorderRadius.circular(16),
                 ),
                 child: (state.isLoading == true && state.authMethod == method)

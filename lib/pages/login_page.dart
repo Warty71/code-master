@@ -5,12 +5,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../bloc/user_bloc/user_bloc.dart';
-
-Color primaryColor = Colors.blueGrey.shade100;
-Color secondaryColor = const Color.fromARGB(255, 65, 44, 118);
-Color tertiaryColor = const Color.fromARGB(255, 195, 84, 65);
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -27,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        backgroundColor: primaryColor,
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: Center(
             child: SingleChildScrollView(
@@ -37,7 +32,7 @@ class _LoginPageState extends State<LoginPage> {
                   Icon(
                     Icons.speed,
                     size: 172,
-                    color: tertiaryColor,
+                    color: Theme.of(context).colorScheme.onBackground,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 5.0),
@@ -46,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                       style: GoogleFonts.openSans(
                         fontSize: 24,
                         fontWeight: FontWeight.w600,
-                        color: secondaryColor,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ),
@@ -59,12 +54,12 @@ class _LoginPageState extends State<LoginPage> {
                       style: GoogleFonts.openSans(
                         fontSize: 16,
                         fontWeight: FontWeight.w600,
-                        color: secondaryColor,
+                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                   ),
                   Divider(
-                    color: secondaryColor,
+                    color: Theme.of(context).colorScheme.onBackground,
                     indent: 25,
                     endIndent: 25,
                     thickness: 1,

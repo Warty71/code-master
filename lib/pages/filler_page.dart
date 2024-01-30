@@ -1,4 +1,4 @@
-import 'package:code_master/constants/app_constants.dart';
+import 'package:code_master/widgets/cm_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -8,29 +8,13 @@ class FillerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        leading: const Icon(
-          Icons.menu,
-          color: Colors.black,
-          size: 30,
-        ),
-        title: Text(
-          AppConstants.appTitleCaps,
-          style: GoogleFonts.roadRage(
-            fontSize: 32,
-            letterSpacing: 2,
-            color: Colors.black,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      backgroundColor: Colors.grey.shade300,
+      appBar: const CmAppBar(),
+      backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
         child: Text(
           "FillerPage",
-          style: GoogleFonts.roadRage(color: Colors.black, fontSize: 40),
+          style: GoogleFonts.roadRage(
+              color: Theme.of(context).colorScheme.onBackground, fontSize: 40),
         ),
       ),
     );

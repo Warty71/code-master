@@ -1,7 +1,7 @@
 import 'package:code_master/bloc/network_bloc/network_bloc.dart';
 import 'package:code_master/bloc/network_bloc/network_event.dart';
 import 'package:code_master/bloc/user_bloc/user_bloc.dart';
-import 'package:code_master/constants/app_constants.dart';
+import 'package:code_master/constants/light_theme.dart';
 import 'package:code_master/firebase_options.dart';
 import 'package:code_master/router/app_router.dart';
 import 'package:code_master/managers/snackbar_manager.dart';
@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
                     SnackBar(
                       content: Text(message!),
                       duration: const Duration(seconds: 2),
-                      backgroundColor: AppConstants.introBackgroundColor,
+                      backgroundColor: const Color.fromARGB(255, 99, 73, 191),
                       elevation: 3,
                     ),
                   );
@@ -79,6 +79,7 @@ class MyApp extends StatelessWidget {
         locale: context.locale,
         debugShowCheckedModeBanner: false,
         routerConfig: _router,
+        theme: lightTheme,
       ),
     );
   }

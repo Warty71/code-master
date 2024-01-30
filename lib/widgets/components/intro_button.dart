@@ -10,7 +10,7 @@ class IntroButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Ink(
       decoration: BoxDecoration(
-        color: const Color.fromARGB(212, 135, 81, 77),
+        color: Theme.of(context).colorScheme.primary,
         borderRadius: BorderRadius.circular(10),
       ),
       child: InkWell(
@@ -32,7 +32,7 @@ class IntroButton extends StatelessWidget {
                     text,
                     style: GoogleFonts.roadRage(
                       fontSize: 24,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
 
@@ -42,9 +42,9 @@ class IntroButton extends StatelessWidget {
                   ),
 
                   // * Icon - Forward
-                  const Icon(
+                  Icon(
                     Icons.forward,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onPrimary,
                     size: 24,
                   ),
                 ],

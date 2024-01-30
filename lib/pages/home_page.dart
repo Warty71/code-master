@@ -11,14 +11,14 @@ class HomePage extends StatelessWidget {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        backgroundColor: Colors.grey.shade300,
+        backgroundColor: Theme.of(context).colorScheme.background,
         appBar: const CmAppBar(),
         body: SafeArea(
             child: Center(
           child: Text(
             "HomePage",
             style: GoogleFonts.roadRage(
-              color: Colors.black,
+              color: Theme.of(context).colorScheme.onBackground,
               fontSize: 40,
             ),
           ),

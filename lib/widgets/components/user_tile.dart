@@ -29,7 +29,7 @@ class UserTile extends StatelessWidget {
           child: Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(15),
-              color: Colors.transparent,
+              color: Theme.of(context).colorScheme.primaryContainer,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
@@ -46,13 +46,16 @@ class UserTile extends StatelessWidget {
                         title,
                         style: GoogleFonts.roadRage(
                           fontSize: 28,
+                          color:
+                              Theme.of(context).colorScheme.onPrimaryContainer,
                         ),
                       ),
                     ],
                   ),
-                  const Icon(
+                  Icon(
                     Icons.arrow_forward,
                     size: 28,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
                   ),
                 ],
               ),
