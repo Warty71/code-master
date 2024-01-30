@@ -11,7 +11,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
   final AuthHandler authHandler = AuthHandler();
   final DatabaseHandler databaseHandler = DatabaseHandler();
 
-  UserBloc() : super(UserState()) {
+  UserBloc() : super(const UserState()) {
     on<UserEvent>((event, emit) async {
       UserCredential? userCredential;
       UserModel? user;

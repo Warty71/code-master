@@ -1,24 +1,13 @@
 import 'package:code_master/models/user_model/user_model.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-class UserState {
-  final UserModel? user;
-  final bool? isLoading;
-  final String? authMethod;
-  UserState({
-    this.user,
-    this.isLoading,
-    this.authMethod,
-  });
+part 'user_state.freezed.dart';
 
-  UserState copyWith({
+@freezed
+class UserState with _$UserState {
+  const factory UserState({
     UserModel? user,
-    bool? isLoading,
+    @Default(false) bool? isLoading,
     String? authMethod,
-  }) {
-    return UserState(
-      user: user,
-      isLoading: isLoading,
-      authMethod: authMethod,
-    );
-  }
+  }) = _UserState;
 }
