@@ -1,13 +1,10 @@
 // The route configuration.
 import 'package:code_master/pages/auth_page.dart';
-import 'package:code_master/pages/details_page.dart';
 import 'package:code_master/pages/home_page.dart';
 import 'package:code_master/pages/onboarding_page.dart';
 import 'package:code_master/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-
-import '../models/app_model.dart';
 import '../pages/cv_page.dart';
 
 class AppRouter {
@@ -36,13 +33,6 @@ class AppRouter {
             path: 'login',
             builder: (BuildContext context, GoRouterState state) {
               return const LoginPage();
-            },
-          ),
-          GoRoute(
-            path: 'details',
-            builder: (BuildContext context, GoRouterState state) {
-              App displayApp = state.extra as App;
-              return DetailsPage(currentApp: displayApp);
             },
           ),
           GoRoute(
