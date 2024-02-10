@@ -3,6 +3,7 @@ import 'package:code_master/pages/auth_page.dart';
 import 'package:code_master/pages/home_page.dart';
 import 'package:code_master/pages/onboarding_page.dart';
 import 'package:code_master/pages/login_page.dart';
+import 'package:code_master/pages/weather_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../pages/cv_page.dart';
@@ -39,6 +40,12 @@ class AppRouter {
             path: 'cv',
             builder: (BuildContext context, GoRouterState state) {
               return const CVPage();
+            },
+          ),
+          GoRoute(
+            path: "weather",
+            builder: (BuildContext context, GoRouterState state) {
+              return const WeatherPage();
             },
           ),
         ],

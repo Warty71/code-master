@@ -1,6 +1,7 @@
 import 'package:code_master/bloc/network_bloc/network_bloc.dart';
 import 'package:code_master/bloc/network_bloc/network_event.dart';
 import 'package:code_master/bloc/user_bloc/user_bloc.dart';
+import 'package:code_master/bloc/weather_bloc/weather_bloc.dart';
 import 'package:code_master/constants/light_theme.dart';
 import 'package:code_master/firebase_options.dart';
 import 'package:code_master/router/app_router.dart';
@@ -9,15 +10,18 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:go_router/go_router.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await dotenv.load();
 
   runApp(
     EasyLocalization(
@@ -49,6 +53,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => UserBloc(),
+        ),
+        BlocProvider(
+          create: (context) => WeatherBloc(),
         ),
       ],
       child: MaterialApp.router(

@@ -119,7 +119,7 @@ class UserPage extends StatelessWidget {
                   ),
                 ),
 
-                // * ListView
+                // * Usertiles
                 UserTile(
                   title: "User Details",
                   icon: Icon(
@@ -131,6 +131,19 @@ class UserPage extends StatelessWidget {
                     context.push("/cv");
                   },
                 ),
+
+                UserTile(
+                  title: "Weather",
+                  icon: Icon(
+                    Icons.sunny,
+                    size: 28,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
+                  onTap: () {
+                    context.push("/weather");
+                  },
+                ),
+
                 UserTile(
                   title: "Sign Out",
                   icon: Icon(
@@ -142,6 +155,7 @@ class UserPage extends StatelessWidget {
                     BlocProvider.of<UserBloc>(context).add(UserEvent.signOut);
                   },
                 ),
+
                 UserTile(
                   title: "Delete Account",
                   icon: Icon(
